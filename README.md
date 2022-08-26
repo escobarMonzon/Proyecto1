@@ -32,5 +32,11 @@ Para poder trabajar un ticket debera de indicar si nit de soporte y su rol de lo
  MODULO 6 - REPORTERIA. LISTA DE TICKET POR USUARIO  
  este modulo le mostrara los ticket que se han creado por usuario.
  
+ En todos los menus que se le presente en el sistema si ya no desea continuar trabajando en el modulo donde se encuentra debe de presionar el numero 0 para poder salir de la seccion y del sistema
+ 
+ 
+ LINK DE LA EXPLICACION DE LA FUNCIONALIDAD DEL SISTEMA  
+ 
+ 
  
  
