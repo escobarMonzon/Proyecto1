@@ -16,16 +16,20 @@ public class Main {
      * @param args inicializa el sistema
      * @throws Exception muestra excepcion si algo sale mal
      */
+    /** Variable almacena el correlativo que tendran los ticket*/
+    public static int correlativo=0;
+    /** Variable almacena la fecha que tendran los ticket*/
+    static LocalDate fecha = LocalDate.now();
+    /** Variable almacena la hora que tendran los ticket*/
+    static LocalTime hora = LocalTime.now();
     public static void main(String[] args) throws Exception {
-        LocalDate fecha = LocalDate.now();
-        LocalTime hora = LocalTime.now();
         Scanner DatosIngresoSistema = new Scanner(System.in);
         int Opcion = 0;
         do {
             try {
-                System.out.println("*********************************");
-                System.out.println("*\t\tMENU DE OPCIONES\t\t*");
-                System.out.println("*********************************");
+                System.out.println("*********************************************************************");
+                System.out.println("*\t\tMENU DE OPCIONES PARA EL MANEJO DE TICKET SISTEMA OTRS\t\t*");
+                System.out.println("*********************************************************************");
                 System.out.println("\t\t1. \tCarga de datos");
                 System.out.println("\t\t2. \tCrear Ticket");
                 System.out.println("\t\t3. \tTrabajar Ticket");
@@ -33,12 +37,11 @@ public class Main {
                 System.out.println("\t\t5. \tListado de ticket por cola");
                 System.out.println("\t\t6. \tListado de Tickets por usuario");
                 System.out.println("\t\t0. \tSalir");
-                System.out.println("\tPresione el numero de la opcion que desea procesar");
+                System.out.println("\t\nPresione el numero de la opcion que desea procesar");
                 Scanner digito = new Scanner(System.in);
                 Opcion = digito.nextInt();
                 switch (Opcion) {
                     case 1:
-                        System.out.println("Subir datos predeterminados al Sistema");
                         CargarDocumento();
                         System.out.println("Los datos fueron cargados al sistema");
                         Continuar();
@@ -57,17 +60,16 @@ public class Main {
                         Continuar();
                         break;
                     case 3:
-
                         String nitIngresado;
                         int rol = 0;
                         do {
                             Scanner roles = new Scanner(System.in);
                             try {
-                                System.out.println("*\t\tIngresar al Sistema Para trabajar ticket\t\t*");
-                                System.out.println("*********************************");
+                                System.out.println("\nIngreso para el manejo de Ticket");
+                                System.out.println("*********************************\n");
                                 System.out.println("Ingrese su nit");
                                 nitIngresado = DatosIngresoSistema.nextLine();
-                                System.out.println("INGRESE EL NUMERO DE ROL AL QUE PERTENECE");
+                                System.out.println("Seleccione rol");
                                 System.out.println("\t\t1.Mesa de Ayuda");
                                 System.out.println("\t\t2.Soporte Tecnico");
                                 System.out.println("\t\t3.Desarrollador.");
@@ -77,10 +79,11 @@ public class Main {
                                     case 1:
                                         Collections.reverse(ColaServicio.cola);
                                         int seleccion = 0;
+                                        System.out.println("Bienvenido a la mesa de Ayuda Seleccione una opcion del menu ");
                                         do {
                                             Scanner seleccionTrabajar = new Scanner(System.in);
                                             try {
-                                                System.out.println("Seleccione una opcion para continuar");
+                                                System.out.println("MENU");
                                                 System.out.println("\t1.\tSolicitar Asignacion de Ticket");
                                                 System.out.println("\t0.\tSalir");
                                                 seleccion = seleccionTrabajar.nextInt();
@@ -107,11 +110,11 @@ public class Main {
                                                                 try {
                                                                     Formatter mesaMascara = new Formatter();
                                                                     mesaMascara.format("%06d", mesa);
-                                                                    System.out.println("NUEVO TOCKET A TRABAJAR");
+                                                                    System.out.println("DATOS DEL TICKET, ASIGNADO POR EL SISTEMA, METODO FIFO");
                                                                     System.out.println("No.\t" + mesaMascara);
                                                                     System.out.println("Nit\t" + nitResultado);
                                                                     System.out.println("Detalle\t" + DescripcionResultado);
-                                                                    System.out.println("Opciones a elegir con el ticket");
+                                                                    System.out.println("\n\nSeleccione una opcion para Procesar el Ticket Asignado\n");
                                                                     System.out.println("\t1.\tEscalar");
                                                                     System.out.println("\t2.\tSolucionar");
                                                                     System.out.println("\t0.\tSalir");
@@ -144,7 +147,7 @@ public class Main {
                                                                         default:
                                                                             if (seleccionProceso == 0) {
                                                                             } else {
-                                                                                System.out.println("Seleccion no valida");
+                                                                                System.out.println("Opcion del menu Invalido");
                                                                                 Continuar();
                                                                             }
                                                                     }
@@ -158,7 +161,7 @@ public class Main {
                                                     default:
                                                         if (seleccion == 0) {
                                                         } else {
-                                                            System.out.println("Seleccion no valida");
+                                                            System.out.println("Opcion del menu Invalido");
                                                             Continuar();
                                                         }
                                                 }
@@ -241,7 +244,7 @@ public class Main {
                                                                         default:
                                                                             if (seleccionProceso == 0) {
                                                                             } else {
-                                                                                System.out.println("Seleccion no valida");
+                                                                                System.out.println("Opcion del menu Invalido");
                                                                                 Continuar();
                                                                             }
                                                                     }
@@ -255,7 +258,7 @@ public class Main {
                                                     default:
                                                         if (seleccion2 == 0) {
                                                         } else {
-                                                            System.out.println("Seleccion no valida");
+                                                            System.out.println("Opcion del menu Invalido");
                                                             Continuar();
                                                         }
                                                 }
@@ -330,7 +333,7 @@ public class Main {
                                                                         default:
                                                                             if (seleccionProceso == 0) {
                                                                             } else {
-                                                                                System.out.println("Seleccion no valida");
+                                                                                System.out.println("Opcion del menu Invalido");
                                                                                 Continuar();
                                                                             }
                                                                     }
@@ -344,7 +347,7 @@ public class Main {
                                                     default:
                                                         if (seleccion3 == 0) {
                                                         } else {
-                                                            System.out.println("Seleccion no valida");
+                                                            System.out.println("Opcion del menu Invalido");
                                                             Continuar();
                                                         }
                                                 }
@@ -358,12 +361,12 @@ public class Main {
                                     default:
                                         if (rol == 0) {
                                         } else {
-                                            System.out.println("Seleccione un rol Valido");
+                                            System.out.println("Opcion de seleccion de ROL Invalido");
                                             Continuar();
                                         }
                                 }
                             } catch (Exception w) {
-                                System.out.println("El rol no existe");
+                                System.out.println("No se permiten letras ni caracteres especiales, vuelva a intentarlo");
                                 Continuar();
                             }
                         } while (rol != 0);
@@ -383,7 +386,7 @@ public class Main {
                     default:
                         if (Opcion == 0) {
                         } else {
-                            System.out.println("Por favor ingrese un numero valido del menu");
+                            System.out.println("Opcion del menu principal Invalido");
                             Continuar();
                         }
                 }
@@ -405,6 +408,7 @@ public class Main {
         Object obj = parser.parse(new FileReader("C:\\informacion.json"));
         JSONArray jsonarray = (JSONArray)obj;
         ArrayList<Ticket> Cargarticket = new ArrayList<>();
+
         for (int i = 0; i < jsonarray.size(); i++) {
             JSONObject jsonObject = (JSONObject)jsonarray.get(i);
             //System.out.println("ticket = "+jsonObject.get("ticket"));
@@ -416,6 +420,8 @@ public class Main {
             String problema= jsonObject.get("problema").toString();
             String cola= jsonObject.get("cola").toString();
             ColaServicio.Agregar(nit,problema,cola);
+            correlativo++;
+            Ticket.Agregar("000001", "Ingresa por carga masiva",TipoEvento.CrearTicket, fecha, hora,correlativo);
         }
     }
 
